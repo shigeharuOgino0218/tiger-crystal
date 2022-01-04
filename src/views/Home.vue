@@ -57,6 +57,7 @@ export default {
       thickness: 1,
     };
 
+    // new THREE.TextureLoader().load("/bg.jpg", (tex) => {
     new THREE.TextureLoader().load("/tiger-crystal/bg.jpg", (tex) => {
       tex.magFilter = THREE.NearestFilter;
       tex.wrapT = THREE.RepeatWrapping;
@@ -68,6 +69,7 @@ export default {
       this.scene.environment = tex;
     });
 
+    // this.loader.obj.load("/tiger.obj", (obj) => {
     this.loader.obj.load("/tiger-crystal/tiger.obj", (obj) => {
       console.log(obj);
       const material = new THREE.MeshPhysicalMaterial({
