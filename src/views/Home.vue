@@ -57,7 +57,7 @@ export default {
       thickness: 1,
     };
 
-    new THREE.TextureLoader().load("/bg.jpg", (tex) => {
+    new THREE.TextureLoader().load("/tiger-crystal/bg.jpg", (tex) => {
       tex.magFilter = THREE.NearestFilter;
       tex.wrapT = THREE.RepeatWrapping;
       tex.wrapS = THREE.RepeatWrapping;
@@ -68,7 +68,7 @@ export default {
       this.scene.environment = tex;
     });
 
-    this.loader.obj.load("/tiger.obj", (obj) => {
+    this.loader.obj.load("/tiger-crystal/tiger.obj", (obj) => {
       console.log(obj);
       const material = new THREE.MeshPhysicalMaterial({
         transmission: params.transmission,
@@ -101,11 +101,11 @@ export default {
     render() {
       requestAnimationFrame(this.render);
       this.renderer.render(this.scene, this.camera);
-      console.log(this.mouse.x, this.mouse.y);
       const tiger = this.scene.getObjectByName("tiger");
-
-      tiger.rotation.x = -this.mouse.y / 2;
-      tiger.rotation.y = this.mouse.x / 2;
+      if (tiger) {
+        tiger.rotation.x = -this.mouse.y / 2;
+        tiger.rotation.y = this.mouse.x / 2;
+      }
 
       this.point.position.set(
         -this.mouse.x * this.width,
